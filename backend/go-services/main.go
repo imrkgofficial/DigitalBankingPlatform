@@ -9,10 +9,10 @@ import (
 
 	"github.com/gorilla/mux"
 	"github.com/joho/godotenv"
-	"DigitalBankingPlatform/backend/go-services/database"
-	"DigitalBankingPlatform/backend/go-services/authentication"
-	"DigitalBankingPlatform/backend/go-services/account"
-	"DigitalBankingPlatform/backend/go-services/transaction"
+	"github.com/imrkgofficial/DigitalBankingPlatform/backend/go-services/database"
+	"github.com/imrkgofficial/DigitalBankingPlatform/backend/go-services/authentication"
+	"github.com/imrkgofficial/DigitalBankingPlatform/backend/go-services/account"
+	"github.com/imrkgofficial/DigitalBankingPlatform/backend/go-services/transaction"
 )
 
 func init() {
