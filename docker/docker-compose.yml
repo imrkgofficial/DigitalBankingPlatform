@@ -1,1 +1,56 @@
-# Docker Compose file 
+version: "3.9"
+
+services:
+  go-service:
+    build:
+      context: ../
+      dockerfile: docker/go-service.Dockerfile
+    container_name: go-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongodb
+      - mysql
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/digitalbanking
+      - MYSQL_DSN=root:password@tcp(mysql:3306)/banking
+    volumes:
+      - ../backend/go-services:/app
+
+  mongodb:
+    image: mongo:6.0
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb-data:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: digitalbanking
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: banking
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin
+    ports:
+      - "8081:80" # phpMyAdmin will be accessible on http://localhost:8081
+    depends_on:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: root
+      PMA_PASSWORD: password
+      PMA_PORT: 3306
+
+volumes:
+  mongodb-data:
+  mysql-data:
