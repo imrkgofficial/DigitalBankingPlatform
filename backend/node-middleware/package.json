@@ -1,0 +1,20 @@
+{
+    "name": "node-middleware",
+    "version": "1.0.0",
+    "description": "Middleware for integrating third-party APIs",
+    "main": "app.js",
+    "dependencies": {
+        "express": "^4.21.2",
+        "body-parser": "^1.20.3",
+        "cors": "^2.8.5",
+        "dotenv": "^16.4.7",
+        "mysql": "^2.18.1",
+        "jsonwebtoken": "^9.0.2",
+        "mongoose": "^8.9.3"
+    },
+    "scripts": {
+        "start": "node app.js"
+    },
+    "author": "imrkgofficial",
+    "license": "MIT"
+}
